@@ -1,0 +1,104 @@
+﻿@page "/"
+
+<div class="card border-warning" id="FormatSelectionCard">
+    <div class="card-header bg-warning border-warning text-white">
+        Format Selection
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-4 mb-3">
+                <label for="Series" class="form-label">Series</label>
+                <select class="form-select" aria-label="Series" id="Series" @onchange="OnSeriesSelect">
+                    @if (FormatSelection.Series != null)
+                    {
+                        if (FormatSelection.SelectedSeries == null)
+                        {
+                            <option selected>Select a Series</option>
+                        }
+                        foreach (var series in FormatSelection.Series)
+                        {
+                            <option value=@series.Series>@series.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="col-4 mb-3">
+                <label for="Game" class="form-label">Game</label>
+                <select class="form-select" aria-label="Game" id="Game" @onchange="OnGameSelectedChangeEventArgs">
+                    @if (FormatSelection.Games != null)
+                    {
+                        if (FormatSelection.SelectedGame == null)
+                        {
+                            <option selected>Select a Game</option>
+                        }
+
+                        foreach (var game in FormatSelection.Games)
+                        {
+                            <option value=@game.Game>@game.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="col-4 mb-3">
+                <label for="Format" class="form-label">Format</label>
+                <select class="form-select" aria-label="Format" id="Format" @onchange="OnFormatSelected">
+                    @if (FormatSelection.Formats != null)
+                    {
+                        if (FormatSelection.SelectedFormat == null)
+                        {
+                            <option selected>Select a Game</option>
+                        }
+                        foreach (var formats in FormatSelection.Formats)
+                        {
+                            <option value=@formats.Format>@formats.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-info" id="TournamentCard">
+    <div class="card-header bg-info border-info text-white">
+        Tournament info
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3 mb-3">
+                <label for="Tournament" class="form-label">Tournament</label>
+                <input type="text" @bind="TournamentInfo.Tournament" class="form-control" id="Tournament">
+            </div>
+
+            <div class="col-3 mb-3">
+                <label for="Phase" class="form-label">Phase</label>
+                <input type="text" @bind="TournamentInfo.Phase" class="form-control" id="Phase">
+            </div>
+
+            <div class="col-3 mb-3">
+                <label for="Round" class="form-label">Round</label>
+                <input type="text" @bind="TournamentInfo.Round" class="form-control" id="Round">
+            </div>
+
+            <div class="col-3 mb-3">
+                <label for="BestOf" class="form-label">Best of</label>
+                <input type="text" @bind="TournamentInfo.BestOf" class="form-control" id="BestOf">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-primary" id="SetCard">
+    <div class="card-header bg-primary border-primary text-white">
+        Manage Set
+    </div>
+    <div class="card-body">
+        <LPMBlitz.FG.Components.ManageSet 
+            FormatSelection="FormatSelection" 
+            TournamentInfo="TournamentInfo">
+        </LPMBlitz.FG.Components.ManageSet>
+    </div>
+</div>
+

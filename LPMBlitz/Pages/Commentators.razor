@@ -1,0 +1,25 @@
+﻿@page "/Commentators"
+
+<div class="card border-success" id="FormatSelectionCard" style="height: 100%;">
+    <div class="card-header bg-success border-success text-white">
+        Manage Commentators
+    </div>
+    <div class="card-body">
+        @foreach (var commentator in _commentators)
+        {
+            <div class="row">
+                <div class="col-5 mb-3">
+                    <label for="CommenatorName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="CommentatorName">
+                </div>
+                <div class="col-5 mb-3">
+                    <label for="CommenatorTwitter" class="form-label">Twitter</label>
+                    <input type="text" class="form-control" id="CommentatorTwitter">
+                </div>
+                <div class="col-2">
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

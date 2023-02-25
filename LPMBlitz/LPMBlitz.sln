@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31611.283
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LPMBlitz", "LPMBlitz.csproj", "{ACC5D4FA-EC2D-4AFF-8CB4-1709BFD4F3AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACC5D4FA-EC2D-4AFF-8CB4-1709BFD4F3AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACC5D4FA-EC2D-4AFF-8CB4-1709BFD4F3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACC5D4FA-EC2D-4AFF-8CB4-1709BFD4F3AF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ACC5D4FA-EC2D-4AFF-8CB4-1709BFD4F3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACC5D4FA-EC2D-4AFF-8CB4-1709BFD4F3AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACC5D4FA-EC2D-4AFF-8CB4-1709BFD4F3AF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C598ACB-D671-450F-8B79-78216EA113E2}
+		        SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+EndGlobal
