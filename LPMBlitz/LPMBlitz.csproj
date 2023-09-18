@@ -50,12 +50,14 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Blazored.Toast" Version="4.1.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Data\" />
       <Folder Include="FightingGames\" />
+      <Folder Include="Extensions\" />
     </ItemGroup>
 
 </Project>

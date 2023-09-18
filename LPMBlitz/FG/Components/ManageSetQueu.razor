@@ -1,0 +1,27 @@
+﻿@if (FormatSelection.SelectedFormat == null) return;
+
+@if (FormatSelection.SelectedFormat == Enums.FormatsEnum.Singles)
+{
+    for (var i = 0; i < SinglesQueu.Count; i++)
+    {
+        var singles = SinglesQueu[i];
+        var showMoveDownButton = i < SinglesQueu.Count - 1;
+        <LPMBlitz.FG.Components.QueuForms.ManageSinglesQueuSet 
+        SinglesQueuSet="singles"
+        Index="i"
+        ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageSinglesQueuSet>
+    }
+
+}
+else if (FormatSelection.SelectedFormat == Enums.FormatsEnum.Doubles)
+{
+    for (var i = 0; i < DoublesQueu.Count; i++)
+    {
+        var doubles = DoublesQueu[i];
+        var hideMoveDownButton = i < DoublesQueu.Count - 1;
+        <LPMBlitz.FG.Components.QueuForms.ManageDoublesQueuSet 
+        DoublesQueuSet="doubles"
+        Index="i"
+        ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageDoublesQueuSet>
+    }   
+}

@@ -1,4 +1,5 @@
 ﻿using LPMBlitz.FG.Configurations;
+using LPMBlitz.Services;
 using Microsoft.Extensions.Logging;
 
 namespace LPMBlitz;
@@ -8,8 +9,7 @@ public static class MauiProgram
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
+		builder.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -22,9 +22,11 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		//builder.Services.AddSingleton<WeatherForecastService>();
 		builder.Services.AddSingleton<FightingGamesConfiguration>();
+        builder.Services.AddSingleton<FightingGamesDataService>();
+        builder.Services.AddSingleton<FightingGamesSetQueuDataService>();
+        builder.Services.AddSingleton<CommentatorsDataService>();
 
-		return builder.Build();
+        return builder.Build();
 	}
 }

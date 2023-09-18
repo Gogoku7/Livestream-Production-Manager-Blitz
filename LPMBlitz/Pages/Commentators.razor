@@ -1,23 +1,72 @@
 ﻿@page "/Commentators"
 
 <div class="card border-success" id="FormatSelectionCard" style="height: 100%;">
-    <div class="card-header bg-success border-success text-white">
-        Manage Commentators
-    </div>
-    <div class="card-body">
-        @foreach (var commentator in _commentators)
-        {
-            <div class="row">
-                <div class="col-5 mb-3">
-                    <label for="CommenatorName" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="CommentatorName">
-                </div>
-                <div class="col-5 mb-3">
-                    <label for="CommenatorTwitter" class="form-label">Twitter</label>
-                    <input type="text" class="form-control" id="CommentatorTwitter">
-                </div>
-                <div class="col-2">
+    <div class="card-header bg-success border-success text-white row">
+        <div class="col-5">
+            <button class="btn btn-success btn-outline-light oi oi-data-transfer-upload" id="submitCommentatorsButton" @onclick="OnSubmitCommentatorsClick" title="Submit Commentators"></button>
+        </div>
+        <div class="col-2 text-center">
+            <text class="panel-title">Manage Commentators</text>
+        </div>
 
+        <div class="col-5 text-right">
+            <button class="btn btn-success btn-outline-light oi oi-plus" id="addCommentatorButton" @onclick="OnAddButtonClick" title="Add a new Commentator"></button>
+        </div>
+    </div>
+    <div class="card-body" style="margin-bottom: 100px;">
+        @for (var i = 0; i < _commentators.Count; i++)
+        {
+            var commentator = _commentators[i];
+            var index = i;
+            <div class="row">
+                <div class="col-4 col-md-5">
+                    <label for="CommenatorName@(i)" class="form-label">Name</label>
+                </div>
+                <div class="col-4 col-md-5">
+                    <label for="CommenatorTwitter@(i)" class="form-label">Twitter</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4 col-md-5 mb-2">
+                    <input type="text" @bind-value="commentator.Name" class="form-control" id="CommentatorName@(i)">
+                </div>
+                <div class="col-4 col-md-5 mb-2">
+                    <input type="text" @bind-value="commentator.Twitter" class="form-control" id="CommentatorTwitter@(i)">
+                </div>
+                <div class="col-4 col-md-2">
+                    <div class="row">
+                        @if (i == 0)
+                        {
+                            <div class="col-4 col-lg-3 col-xxl-2">
+                                <button type="button" class="btn btn-primary" @onclick="() => OnMoveDownButtonClick(index)"><span class="oi oi-arrow-bottom"></span></button>
+                            </div>
+                            <div class="col-4 offset-4 col-lg-3 offset-lg-3 col-xxl-2 offset-xxl-2">
+                                <button type="button" class="btn btn-danger" @onclick="() => OnRemoveButtonClick(index)"><span class="oi oi-x"></span></button>
+                            </div>
+                        }
+                        else if (i == _commentators.Count - 1)
+                        {
+                            <div class="col-4 offset-4 col-lg-3 offset-lg-3 col-xxl-2 offset-xxl-2">
+                                <button type="button" class="btn btn-primary" @onclick="() => OnMoveUpButtonClick(index)"><span class="oi oi-arrow-top"></span></button>
+                            </div>
+                            <div class="col-4 col-lg-3 col-xxl-2">
+                                <button type="button" class="btn btn-danger" @onclick="() => OnRemoveButtonClick(index)"><span class="oi oi-x"></span></button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-4 col-lg-3 col-xxl-2">
+                                <button type="button" class="btn btn-primary" @onclick="() => OnMoveDownButtonClick(index)"><span class="oi oi-arrow-bottom"></span></button>
+                            </div>
+                            <div class="col-4 col-lg-3 col-xxl-2">
+                                <button type="button" class="btn btn-primary" @onclick="() => OnMoveUpButtonClick(index)"><span class="oi oi-arrow-top"></span></button>
+                            </div>
+                            <div class="col-4 col-lg-3 col-xxl-2">
+                                <button type="button" class="btn btn-danger" @onclick="() => OnRemoveButtonClick(index)"><span class="oi oi-x"></span></button>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         }

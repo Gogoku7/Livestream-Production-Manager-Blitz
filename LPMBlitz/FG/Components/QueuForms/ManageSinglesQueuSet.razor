@@ -1,0 +1,285 @@
+﻿<div class="row">
+    <div class="col-12">
+        <h1>Set @(Index + 1)</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                Phase
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                Round
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                Best of
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.TournamentInfo.Phase" class="form-control" id="SinglesQueuSet@(Index)Phase">
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.TournamentInfo.Round" class="form-control" id="SinglesQueuSet@(Index)Round">
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.TournamentInfo.BestOf" class="form-control" id="SinglesQueuSet@(Index)BestOf">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                Start Time (countdown time)
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                Start Moment (Countdown to time)
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                Actions
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                @*<input type="text" @bind="SinglesQueuSet.SetStartTime" class="form-control" id="SinglesQueuSet@(SinglesQueuSet.Index)SetStartTime">*@
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.SetStartMoment" class="form-control" id="SinglesQueuSet@(Index)SetStartMoment">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="row">
+            <div class="col-2 text-center">
+                <button class="btn btn-success oi oi-data-transfer-upload" title="Save Set"></button>
+            </div>
+
+            <div class="col-2 text-center">
+                <button class="btn btn-danger oi oi-x" title="Delete Set"></button>
+            </div>
+                
+            <div class="col-2 text-center">
+                <button class="btn btn-warning text-white oi oi-data-transfer-upload" title="Export as Active Set"></button>
+            </div>
+                
+            <div class="col-2 text-center">
+                <button class="btn btn-info text-white oi oi-data-transfer-download" title="Import Winner of Active Set"></button>
+            </div>
+
+            <div class="col-2 text-center">
+                @if (ShowMoveDownButton)
+                {
+                    <button class="btn btn-primary oi oi-arrow-bottom" title="Move Set down"></button>
+                }
+            </div>
+
+            <div class="col-2 text-center">
+                @if (Index != 0)
+                {
+                    <button class="btn btn-primary oi oi-arrow-top" title="Move Set Up"></button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Player 1
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Player 2
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Name
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Name
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.Singles.Player1.Name" class="form-control" id="SinglesQueuSet@(Index)Player1Name">
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.Singles.Player2.Name" class="form-control" id="SinglesQueuSet@(Index)Player2Name">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Sponsor
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Sponsor
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.Singles.Player1.Sponsor" class="form-control" id="SinglesQueuSet@(Index)Player1Sponsor">
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.Singles.Player2.Sponsor" class="form-control" id="SinglesQueuSet@(Index)Player2Sponsor">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Twitter
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Twitter
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.Singles.Player1.Twitter" class="form-control" id="SinglesQueuSet@(Index)Player1Twitter">
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.Singles.Player2.Twitter" class="form-control" id="SinglesQueuSet@(Index)Player2Twitter">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Twitch
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Twitch
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.Singles.Player1.Twitch" class="form-control" id="SinglesQueuSet@(Index)Player1Twitch">
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="text" @bind="SinglesQueuSet.Singles.Player2.Twitch" class="form-control" id="SinglesQueuSet@(Index)Player2Twitch">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Score
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                Score
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="number" @bind="SinglesQueuSet.Singles.Player1.Score" class="form-control" id="SinglesQueuSet@(Index)Player1Score">
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="number" @bind="SinglesQueuSet.Singles.Player2.Score" class="form-control" id="SinglesQueuSet@(Index)Player2Score">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-﻿using LPMBlitz.FG.Configurations;
+﻿using LPMBlitz.FG.Components;
+using LPMBlitz.FG.Configurations;
 using LPMBlitz.FG.Enums;
 using LPMBlitz.FG.Models;
 using Microsoft.AspNetCore.Components;
@@ -9,6 +10,9 @@ public partial class Index : ComponentBase
 {
     [Inject]
     FightingGamesConfiguration FightingGamesConfiguration { get; set; }
+
+    private ManageSet ManageSet { get; set; }
+
     private readonly FormatSelection FormatSelection = new();
     private readonly TournamentInfo TournamentInfo = new();
 
@@ -38,5 +42,14 @@ public partial class Index : ComponentBase
 
 
         StateHasChanged();
+    }
+
+    public void OnSubmitSetClick()
+    {
+        if (FormatSelection.SelectedSeries == null) return;
+        if (FormatSelection.SelectedGame == null) return;
+        if (FormatSelection.SelectedFormat == null) return;
+
+        ManageSet.SubmitSet();
     }
 }

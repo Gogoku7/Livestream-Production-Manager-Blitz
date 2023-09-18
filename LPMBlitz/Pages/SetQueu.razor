@@ -1,9 +1,21 @@
 ﻿@page "/SetQueu"
 
 <div class="card border-info" id="SetQueuCard" style="height: 100%;">
-    <div class="card-header bg-info border-info text-white">
-        Manage Set Queu
+    <div class="card-header bg-info border-info text-white row">
+        <div class="col-5">
+            <button class="btn btn-success oi oi-data-transfer-upload" id="submitQueuSetButton" title="Submit the entire Set Queu"></button>
+        </div>
+        <div class="col-2 text-center">
+            <text class="panel-title">Manage Set</text>
+        </div>
+        <div class="col-5 text-right">
+            <button class="btn btn-success btn-outline-light oi oi-plus" id="addQueuSetButton" @onclick="OnAddButtonClick" title="Add a new Commentator"></button>
+        </div>
     </div>
-    <div class="card-body">
+    <div class="card-body" style="margin-bottom: 100px;">
+        <LPMBlitz.FG.Components.ManageSetQueu
+        @ref="ManageSetQueu">
+
+        </LPMBlitz.FG.Components.ManageSetQueu>
     </div>
 </div>
