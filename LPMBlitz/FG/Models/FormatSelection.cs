@@ -15,6 +15,7 @@ public class FormatSelection
             SelectedFormat = null;
             Games = Series.First(s => s.Series == SelectedSeries).Games;
             Formats = null;
+            NotifyFormatSelectionHasChanged?.Invoke();
         }
     }
 
@@ -30,7 +31,7 @@ public class FormatSelection
                 SelectedFormat = null;
                 Formats = Games.First(g => g.Game == SelectedGame).Formats;
             }
-
+            NotifyFormatSelectionHasChanged?.Invoke();
         }
     }
 
@@ -38,7 +39,18 @@ public class FormatSelection
     public FormatsEnum? SelectedFormat
     {
         get => _selectedFormat;
-        set => _selectedFormat = value;
+        set
+        {
+            _selectedFormat = value;
+            NotifyFormatSelectionHasChanged?.Invoke();
+        }
+    }
+
+    public Action NotifyFormatSelectionHasChanged { get; }
+
+    public FormatSelection(Action notifyFormatSelectionHasChanged)
+    {
+        NotifyFormatSelectionHasChanged = notifyFormatSelectionHasChanged;
     }
 
     public List<SeriesModel> Series;

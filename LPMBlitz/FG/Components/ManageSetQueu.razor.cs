@@ -24,25 +24,14 @@ namespace LPMBlitz.FG.Components
         [Inject]
         public FightingGamesSetQueuDataService FightingGamesSetQueuDataService { get; set; }
 
-        private FormatSelection FormatSelection = new();
-
-        [Parameter]
-        public TournamentInfo TournamentInfo { get; set; }
-
-        private List<SinglesQueuModel> SinglesQueu = new();
-        private List<DoublesQueuModel> DoublesQueu = new();
-        private List<CrewsClassicQueuModel> CrewsClassicQueu = new();
-        private List<CrewsSmashQueuModel> CrewsSmashQueu = new();
+        [Inject]
+        public AppState AppState { get; set; }
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
 
-            FormatSelection.Series = FightingGamesConfiguration.GetConfiguration();
-
-            FormatSelection.SelectedSeries = SeriesEnum.SuperSmashBros;
-            FormatSelection.SelectedGame = GamesEnum.SuperSmashBrosUltimate;
-            FormatSelection.SelectedFormat = FormatsEnum.Singles;
+            AppState.OnChangeFormatSelection += StateHasChanged;
             
             StateHasChanged();
         }
@@ -59,14 +48,14 @@ namespace LPMBlitz.FG.Components
 
         public void AddSetToQueu()
         {
-            if (FormatSelection.SelectedFormat == FormatsEnum.Singles)
-                SinglesQueu.Add(new());
-            else if (FormatSelection.SelectedFormat == FormatsEnum.Doubles)
-                DoublesQueu.Add(new());
-            else if (FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
-                CrewsClassicQueu.Add(new());
-            else if (FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
-                CrewsSmashQueu.Add(new());
+            if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
+                AppState.SinglesQueu.Add(new());
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Doubles)
+                AppState.DoublesQueu.Add(new());
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
+                AppState.CrewsClassicQueu.Add(new());
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
+                AppState.CrewsSmashQueu.Add(new());
 
             StateHasChanged();
         }

@@ -14,6 +14,8 @@ namespace LPMBlitz.FG.Components.QueuForms
         public DoublesQueuModel DoublesQueuSet { get; set; }
         [Parameter]
         public int Index { get; set; }
+        [Parameter]
+        public bool ShowMoveDownButton { get; set; }
 
         public void Import()
         {

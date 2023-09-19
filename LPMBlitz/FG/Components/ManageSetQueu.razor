@@ -1,11 +1,11 @@
-﻿@if (FormatSelection.SelectedFormat == null) return;
+﻿@if (AppState.FormatSelection.SelectedFormat == null) return;
 
-@if (FormatSelection.SelectedFormat == Enums.FormatsEnum.Singles)
+@if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.Singles)
 {
-    for (var i = 0; i < SinglesQueu.Count; i++)
+    for (var i = 0; i < AppState.SinglesQueu.Count; i++)
     {
-        var singles = SinglesQueu[i];
-        var showMoveDownButton = i < SinglesQueu.Count - 1;
+        var singles = AppState.SinglesQueu[i];
+        var showMoveDownButton = i < AppState.SinglesQueu.Count - 1;
         <LPMBlitz.FG.Components.QueuForms.ManageSinglesQueuSet 
         SinglesQueuSet="singles"
         Index="i"
@@ -13,12 +13,12 @@
     }
 
 }
-else if (FormatSelection.SelectedFormat == Enums.FormatsEnum.Doubles)
+else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.Doubles)
 {
-    for (var i = 0; i < DoublesQueu.Count; i++)
+    for (var i = 0; i < AppState.DoublesQueu.Count; i++)
     {
-        var doubles = DoublesQueu[i];
-        var hideMoveDownButton = i < DoublesQueu.Count - 1;
+        var doubles = AppState.DoublesQueu[i];
+        var showMoveDownButton = i < AppState.DoublesQueu.Count - 1;
         <LPMBlitz.FG.Components.QueuForms.ManageDoublesQueuSet 
         DoublesQueuSet="doubles"
         Index="i"

@@ -11,44 +11,29 @@ public partial class Index : ComponentBase
     [Inject]
     FightingGamesConfiguration FightingGamesConfiguration { get; set; }
 
-    private ManageSet ManageSet { get; set; }
+    [Inject]
+    public AppState AppState { get; set; }
 
-    private readonly FormatSelection FormatSelection = new();
-    private readonly TournamentInfo TournamentInfo = new();
+    private ManageSet ManageSet { get; set; }
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        FormatSelection.Series = FightingGamesConfiguration.GetConfiguration();
+        AppState.FormatSelection.Series = FightingGamesConfiguration.GetConfiguration();
         StateHasChanged();
     }
 
-    public void OnSeriesSelect(ChangeEventArgs e)
-    {
-        FormatSelection.SelectedSeries = (SeriesEnum) Enum.Parse(typeof(SeriesEnum), e.Value.ToString());
-        StateHasChanged();
-    }
-
-    public void OnGameSelectedChangeEventArgs(ChangeEventArgs e)
-    {
-        FormatSelection.SelectedGame = (GamesEnum) Enum.Parse(typeof(GamesEnum), e.Value.ToString());
-        StateHasChanged();
-    }
-
-    public void OnFormatSelected(ChangeEventArgs e)
-    {
-        FormatSelection.SelectedFormat = (FormatsEnum) Enum.Parse(typeof(FormatsEnum), e.Value.ToString());
-
-
-
-        StateHasChanged();
-    }
-
+    public void OnSeriesSelect(ChangeEventArgs e) => AppState.FormatSelection.SelectedSeries = (SeriesEnum)Enum.Parse(typeof(SeriesEnum), e.Value.ToString());
+    
+    public void OnGameSelectedChangeEventArgs(ChangeEventArgs e) => AppState.FormatSelection.SelectedGame = (GamesEnum)Enum.Parse(typeof(GamesEnum), e.Value.ToString());
+    
+    public void OnFormatSelected(ChangeEventArgs e) => AppState.FormatSelection.SelectedFormat = (FormatsEnum)Enum.Parse(typeof(FormatsEnum), e.Value.ToString());
+    
     public void OnSubmitSetClick()
     {
-        if (FormatSelection.SelectedSeries == null) return;
-        if (FormatSelection.SelectedGame == null) return;
-        if (FormatSelection.SelectedFormat == null) return;
+        if (AppState.FormatSelection.SelectedSeries == null) return;
+        if (AppState.FormatSelection.SelectedGame == null) return;
+        if (AppState.FormatSelection.SelectedFormat == null) return;
 
         ManageSet.SubmitSet();
     }

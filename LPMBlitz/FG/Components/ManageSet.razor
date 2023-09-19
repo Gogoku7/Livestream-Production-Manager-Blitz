@@ -1,10 +1,10 @@
-﻿@if (FormatSelection.SelectedFormat == null) return;
+﻿@if (AppState.FormatSelection.SelectedFormat == null) return;
 
-@if (FormatSelection.SelectedFormat == Enums.FormatsEnum.Singles)
+@if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.Singles)
 {
-    <LPMBlitz.FG.Components.SetForms.ManageSinglesSet Singles="Singles"></LPMBlitz.FG.Components.SetForms.ManageSinglesSet>
+    <LPMBlitz.FG.Components.SetForms.ManageSinglesSet Singles="AppState.Singles"></LPMBlitz.FG.Components.SetForms.ManageSinglesSet>
 }
-else if (FormatSelection.SelectedFormat == Enums.FormatsEnum.Doubles)
+else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.Doubles)
 {
     <LPMBlitz.FG.Components.SetForms.ManageDoublesSet></LPMBlitz.FG.Components.SetForms.ManageDoublesSet>
 }

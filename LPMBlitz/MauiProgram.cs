@@ -22,6 +22,8 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
+		builder.Services.AddSingleton<AppState>();
+
 		builder.Services.AddSingleton<FightingGamesConfiguration>();
         builder.Services.AddSingleton<FightingGamesDataService>();
         builder.Services.AddSingleton<FightingGamesSetQueuDataService>();

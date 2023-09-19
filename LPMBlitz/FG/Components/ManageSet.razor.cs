@@ -16,35 +16,34 @@ namespace LPMBlitz.FG.Components
         [Inject]
         public FightingGamesDataService FightingGamesDataService { get; set; }
 
-        [Parameter]
-        public FormatSelection FormatSelection { get; set; }
-        [Parameter]
-        public TournamentInfo TournamentInfo { get; set; }
+        [Inject]
+        public AppState AppState { get; set; }
 
-        private SinglesModel Singles = new SinglesModel();
-        private DoublesModel Doubles = new DoublesModel();
-        private CrewsClassicModel CrewsClassic = new CrewsClassicModel();
-        private CrewsSmashModel CrewsSmash = new CrewsSmashModel();
+        protected override void OnInitialized()
+        {
+            AppState.OnChangeFormatSelection += StateHasChanged;
+            base.OnInitialized();
+        }
 
         public void SubmitSet()
         {
-            var formatFolderPath = FightingGamesDataService.GetFormatFolderPath(FormatSelection);
-            if (FormatSelection.SelectedFormat == FormatsEnum.Singles)
+            var formatFolderPath = FightingGamesDataService.GetFormatFolderPath(AppState.FormatSelection);
+            if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
             {
-                FightingGamesDataService.SaveSingles(TournamentInfo, Singles, formatFolderPath);
+                FightingGamesDataService.SaveSingles(AppState.TournamentInfo, AppState.Singles, formatFolderPath);
             }
-            else if (FormatSelection.SelectedFormat == FormatsEnum.Doubles)
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Doubles)
             {
-                FightingGamesDataService.SaveDoubles(TournamentInfo, Doubles, formatFolderPath);
+                FightingGamesDataService.SaveDoubles(AppState.TournamentInfo, AppState.Doubles, formatFolderPath);
 
             }
-            else if (FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
             {
-                FightingGamesDataService.SaveCrewsClassic(TournamentInfo, CrewsClassic, formatFolderPath);
+                FightingGamesDataService.SaveCrewsClassic(AppState.TournamentInfo, AppState.CrewsClassic, formatFolderPath);
             }
-            else if (FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
             {
-                FightingGamesDataService.SaveCrewsSmash(TournamentInfo, CrewsSmash, formatFolderPath);
+                FightingGamesDataService.SaveCrewsSmash(AppState.TournamentInfo, AppState.CrewsSmash, formatFolderPath);
             }
         }
     }
