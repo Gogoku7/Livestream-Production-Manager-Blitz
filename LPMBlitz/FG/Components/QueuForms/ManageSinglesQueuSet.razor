@@ -94,11 +94,11 @@
             </div>
 
             <div class="col-2 text-center">
-                <button class="btn btn-danger oi oi-x" title="Delete Set"></button>
+                <button class="btn btn-danger oi oi-x" @onclick="OnRemoveSetButtonClick" title="Delete Set"></button>
             </div>
                 
             <div class="col-2 text-center">
-                <button class="btn btn-warning text-white oi oi-data-transfer-upload" title="Export as Active Set"></button>
+                <button class="btn btn-warning text-white oi oi-data-transfer-upload" @onclick="OnExportSetClick" title="Export as Active Set"></button>
             </div>
                 
             <div class="col-2 text-center">
@@ -108,14 +108,14 @@
             <div class="col-2 text-center">
                 @if (ShowMoveDownButton)
                 {
-                    <button class="btn btn-primary oi oi-arrow-bottom" title="Move Set down"></button>
+                    <button class="btn btn-primary oi oi-arrow-bottom" @onclick="OnMoveSetDownButtonClick" title="Move Set down"></button>
                 }
             </div>
 
             <div class="col-2 text-center">
                 @if (Index != 0)
                 {
-                    <button class="btn btn-primary oi oi-arrow-top" title="Move Set Up"></button>
+                    <button class="btn btn-primary oi oi-arrow-top" @onclick="OnMoveSetUpButtonClick" title="Move Set Up"></button>
                 }
             </div>
         </div>

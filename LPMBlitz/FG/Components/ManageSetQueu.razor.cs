@@ -18,8 +18,6 @@ namespace LPMBlitz.FG.Components
     public partial class ManageSetQueu : ComponentBase
     {
         [Inject]
-        FightingGamesConfiguration FightingGamesConfiguration { get; set; }
-        [Inject]
         public FightingGamesDataService FightingGamesDataService { get; set; }
         [Inject]
         public FightingGamesSetQueuDataService FightingGamesSetQueuDataService { get; set; }
@@ -36,16 +34,6 @@ namespace LPMBlitz.FG.Components
             StateHasChanged();
         }
 
-        public void OnSubmitQueuClick()
-        {
-
-        }
-
-        public void OnSubmitSetClick()
-        {
-
-        }
-
         public void AddSetToQueu()
         {
             if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
@@ -59,20 +47,85 @@ namespace LPMBlitz.FG.Components
 
             StateHasChanged();
         }
-
-        public void OnRemoveButtonClick(int index)
+        public void SubmitEntireQueu()
         {
-            //_commentators.RemoveAt(index);
+            if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
+                FightingGamesSetQueuDataService.SaveSinglesSetQueu(AppState.TournamentInfo, AppState.SinglesQueu, AppState.FormatSelection);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Doubles)
+                FightingGamesSetQueuDataService.SaveDoublesSetQueu(AppState.TournamentInfo, AppState.DoublesQueu, AppState.FormatSelection);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
+                FightingGamesSetQueuDataService.SaveCrewsClassicSetQueu(AppState.TournamentInfo, AppState.CrewsClassicQueu, AppState.FormatSelection);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
+                FightingGamesSetQueuDataService.SaveCrewsSmashSetQueu(AppState.TournamentInfo, AppState.CrewsSmashQueu, AppState.FormatSelection);
         }
 
-        public void OnMoveUpButtonClick(int index)
+        public void ExportSet(int index)
         {
-            //_commentators.Reverse(index - 1, 2);
+            if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
+                AppState.Singles = AppState.SinglesQueu[index].Singles;
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Doubles)
+                AppState.Doubles = AppState.DoublesQueu[index].Doubles;
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
+                AppState.CrewsClassic = AppState.CrewsClassicQueu[index].CrewsClassic;
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
+                AppState.CrewsSmash = AppState.CrewsSmashQueu[index].CrewsSmash;
+
+            AppState.NotifyExportQueuSet();
+            StateHasChanged();
         }
 
-        public void OnMoveDownButtonClick(int index)
+        public void SubmitSet(int index)
         {
-            //_commentators.Reverse(index, 2);
+            if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
+                FightingGamesSetQueuDataService.SaveSinglesNextSet(AppState.TournamentInfo, AppState.SinglesQueu[index], AppState.FormatSelection);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Doubles)
+                FightingGamesSetQueuDataService.SaveDoublesNextSet(AppState.TournamentInfo, AppState.DoublesQueu[index], AppState.FormatSelection);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
+                FightingGamesSetQueuDataService.SaveCrewsClassicNextSet(AppState.TournamentInfo, AppState.CrewsClassicQueu[index], AppState.FormatSelection);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
+                FightingGamesSetQueuDataService.SaveCrewsSmashNextSet(AppState.TournamentInfo, AppState.CrewsSmashQueu[index], AppState.FormatSelection);
+        }
+
+        public void RemoveSet(int index)
+        {
+            if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
+                AppState.SinglesQueu.RemoveAt(index);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Doubles)
+                AppState.DoublesQueu.RemoveAt(index);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
+                AppState.CrewsClassicQueu.RemoveAt(index);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
+                AppState.CrewsSmashQueu.RemoveAt(index);
+
+            StateHasChanged();
+        }
+
+        public void MoveSetUp(int index)
+        {
+            if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
+                AppState.SinglesQueu.Reverse(index - 1, 2);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Doubles)
+                AppState.DoublesQueu.Reverse(index - 1, 2);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
+                AppState.CrewsClassicQueu.Reverse(index - 1, 2);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
+                AppState.CrewsSmashQueu.Reverse(index - 1, 2);
+
+            StateHasChanged();
+        }
+
+        public void MoveSetDown(int index)
+        {
+            if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
+                AppState.SinglesQueu.Reverse(index, 2);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Doubles)
+                AppState.DoublesQueu.Reverse(index, 2);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
+                AppState.CrewsClassicQueu.Reverse(index, 2);
+            else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
+                AppState.CrewsSmashQueu.Reverse(index, 2);
+
+            StateHasChanged();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace LPMBlitz.Pages
 
         public void OnSubmitEntireQueuClick()
         {
-
+            ManageSetQueu.SubmitEntireQueu();
         }
 
         public void OnSubmitSetClick()
@@ -24,6 +24,7 @@ namespace LPMBlitz.Pages
 
         public void OnGenerateTop8ButtonClick()
         {
+            throw new NotImplementedException();
             //Future feature.
         }
 

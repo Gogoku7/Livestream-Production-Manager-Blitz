@@ -9,9 +9,13 @@
         <LPMBlitz.FG.Components.QueuForms.ManageSinglesQueuSet 
         SinglesQueuSet="singles"
         Index="i"
+        ExportSet="ExportSet"
+        SubmitSet="SubmitSet"
+        RemoveSet="RemoveSet"
+        MoveSetUp="MoveSetUp"
+        MoveSetDown="MoveSetDown"
         ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageSinglesQueuSet>
     }
-
 }
 else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.Doubles)
 {
@@ -22,6 +26,45 @@ else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.Doubles)
         <LPMBlitz.FG.Components.QueuForms.ManageDoublesQueuSet 
         DoublesQueuSet="doubles"
         Index="i"
+        ExportSet="ExportSet"
+        SubmitSet="SubmitSet"
+        RemoveSet="RemoveSet"
+        MoveSetUp="MoveSetUp"
+        MoveSetDown="MoveSetDown"
         ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageDoublesQueuSet>
     }   
+}
+else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.ClassicCrew)
+{
+    for (int i = 0; i < AppState.CrewsClassicQueu.Count; i++)
+    {
+        var CrewsClassic = AppState.CrewsClassicQueu[i];
+        var showMoveDownButton = i < AppState.CrewsClassicQueu.Count - 1;
+        <LPMBlitz.FG.Components.QueuForms.ManageCrewsClassicQueuSet
+        CrewsClassicQueuSet="CrewsClassic"
+        Index="i"
+        ExportSet="ExportSet"
+        SubmitSet="SubmitSet"
+        RemoveSet="RemoveSet"
+        MoveSetUp="MoveSetUp"
+        MoveSetDown="MoveSetDown"
+        ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageCrewsClassicQueuSet>
+    }
+}
+else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.SmashCrew)
+{
+    for (int i = 0; i < AppState.CrewsSmashQueu.Count; i++)
+    {
+        var crewsSmash = AppState.CrewsSmashQueu[i];
+        var showMoveDownButton = i < AppState.CrewsSmashQueu.Count - 1;
+        <LPMBlitz.FG.Components.QueuForms.ManageCrewsSmashQueuSet
+        CrewsSmashQueuSet="crewsSmash"
+        Index="i"
+        ExportSet="ExportSet"
+        SubmitSet="SubmitSet"
+        RemoveSet="RemoveSet"
+        MoveSetUp="MoveSetUp"
+        MoveSetDown="MoveSetDown"
+        ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageCrewsSmashQueuSet>
+    }
 }

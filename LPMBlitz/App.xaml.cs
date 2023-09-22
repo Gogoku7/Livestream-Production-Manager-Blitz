@@ -14,7 +14,7 @@ public partial class App : Application
 		var window = base.CreateWindow(activationState);
 		if (window != null)
 		{
-			window.Title = "Livestream Production Manager Blitz (Alpha)";
+			window.Title = "Blitz - Livestream Production Manager (Alpha)";
 		}
 
 		return window;

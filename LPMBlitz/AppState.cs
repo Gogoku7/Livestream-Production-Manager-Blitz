@@ -17,14 +17,10 @@ namespace LPMBlitz;
 
 public class AppState : IDisposable
 {
-    public FightingGamesConfiguration FightingGamesFormatConfiguration { get; set; }
-
-    public event Action? OnChange;
     public event Action? OnChangeFormatSelection;
-    public event Action<string>? OnPropertyChange;
+    public event Action? OnExportQueuSet;
 
     public TournamentInfo TournamentInfo { get; set; } = new();
-
     public FormatSelection FormatSelection { get; set; }
 
     //Set
@@ -48,8 +44,8 @@ public class AppState : IDisposable
 
     //public void NotifyDataSubmitted(string entityName, bool success) => OnDataSubmitted?.Invoke(new DataSavedEventArgs(entityName, success));
     private void NotifyFormatSelectionHasChanged() => OnChangeFormatSelection?.Invoke();
+    public void NotifyExportQueuSet() => OnExportQueuSet?.Invoke();
 
-    private void NotifyPropertyChanged(string propertyName) => OnPropertyChange?.Invoke(propertyName);
     //private void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     //{
     //	NotifyStateChanged();

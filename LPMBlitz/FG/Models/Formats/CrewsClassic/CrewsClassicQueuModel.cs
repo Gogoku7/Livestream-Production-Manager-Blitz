@@ -2,6 +2,6 @@
 {
     public class CrewsClassicQueuModel : QueuModel
     {
-        public CrewsClassicModel CrewsSmash { get; set; } = new();
+        public CrewsClassicModel CrewsClassic { get; set; } = new();
     }
 }

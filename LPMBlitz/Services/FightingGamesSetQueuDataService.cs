@@ -23,11 +23,11 @@ namespace LPMBlitz.Services
         private const string _cssSetQueuFileName = "SetQueuContent.css";
         private readonly JsonSerializerOptions jsonSerializerOptions = new() { WriteIndented = true };
 
-        public void SaveSinglesNextSet(TournamentInfo tournamentInfo, SinglesModel singles, string formatFolderPath)
+        public void SaveSinglesNextSet(TournamentInfo tournamentInfo, SinglesQueuModel singles, FormatSelection formatSelection)
         {
             try
             {
-                var jsonFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, formatFolderPath, _jsonFolder);
+                var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
                 Directory.CreateDirectory(jsonFolderPath);
                 File.WriteAllText(Path.Combine(jsonFolderPath, _jsonNextSetFileName), JsonSerializer.Serialize(singles, jsonSerializerOptions));
             }
@@ -37,11 +37,11 @@ namespace LPMBlitz.Services
             }
         }
 
-        public void SaveSinglesSetQueu(TournamentInfo tournamentInfo, List<SinglesModel> singlesSets, string formatFolderPath)
+        public void SaveSinglesSetQueu(TournamentInfo tournamentInfo, List<SinglesQueuModel> singlesSets, FormatSelection formatSelection)
         {
             try
             {
-                var jsonFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, formatFolderPath, _jsonFolder);
+                var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
                 Directory.CreateDirectory(jsonFolderPath);
                 File.WriteAllText(Path.Combine(jsonFolderPath, _jsonSetQueuFileName), JsonSerializer.Serialize(singlesSets, jsonSerializerOptions));
             }
@@ -51,11 +51,11 @@ namespace LPMBlitz.Services
             }
         }
 
-        public void SaveDoublesNextSet(TournamentInfo tournamentInfo, DoublesModel doubles, string formatFolderPath)
+        public void SaveDoublesNextSet(TournamentInfo tournamentInfo, DoublesQueuModel doubles, FormatSelection formatSelection)
         {
             try
             {
-                var jsonFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, formatFolderPath, _jsonFolder);
+                var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
                 Directory.CreateDirectory(jsonFolderPath);
                 File.WriteAllText(Path.Combine(jsonFolderPath, _jsonNextSetFileName), JsonSerializer.Serialize(doubles));
             }
@@ -65,11 +65,13 @@ namespace LPMBlitz.Services
             }
         }
 
-        public void SaveDoublesSetQueu(TournamentInfo tournamentInfo, List<SinglesModel> doublesSets, string formatFolderPath)
+        public void SaveDoublesSetQueu(TournamentInfo tournamentInfo, List<DoublesQueuModel> doublesSets, FormatSelection formatSelection)
         {
             try
             {
-
+                var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
+                Directory.CreateDirectory(jsonFolderPath);
+                File.WriteAllText(Path.Combine(jsonFolderPath, _jsonNextSetFileName), JsonSerializer.Serialize(doublesSets));
             }
             catch (Exception ex)
             {
@@ -77,11 +79,11 @@ namespace LPMBlitz.Services
             }
         }
 
-        public void SaveCrewsClassicNextSet(TournamentInfo tournamentInfo, CrewsClassicModel crewsClassic, string formatFolderPath)
+        public void SaveCrewsClassicNextSet(TournamentInfo tournamentInfo, CrewsClassicQueuModel crewsClassic, FormatSelection formatSelection)
         {
             try
             {
-                var jsonFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, formatFolderPath, _jsonFolder);
+                var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
                 Directory.CreateDirectory(jsonFolderPath);
                 File.WriteAllText(Path.Combine(jsonFolderPath, _jsonNextSetFileName), JsonSerializer.Serialize(crewsClassic));
             }
@@ -91,11 +93,13 @@ namespace LPMBlitz.Services
             }
         }
 
-        public void SaveCrewsClassicSetQueu(TournamentInfo tournamentInfo, List<CrewsClassicModel> crewsClassicSets, string formatFolderPath)
+        public void SaveCrewsClassicSetQueu(TournamentInfo tournamentInfo, List<CrewsClassicQueuModel> crewsClassicSets, FormatSelection formatSelection)
         {
             try
             {
-
+                var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
+                Directory.CreateDirectory(jsonFolderPath);
+                File.WriteAllText(Path.Combine(jsonFolderPath, _jsonNextSetFileName), JsonSerializer.Serialize(crewsClassicSets));
             }
             catch (Exception ex)
             {
@@ -103,11 +107,11 @@ namespace LPMBlitz.Services
             }
         }
 
-        public void SaveCrewsSmashNextSet(TournamentInfo tournamentInfo, CrewsSmashModel crewsSmash, string formatFolderPath)
+        public void SaveCrewsSmashNextSet(TournamentInfo tournamentInfo, CrewsSmashQueuModel crewsSmash, FormatSelection formatSelection)
         {
             try
             {
-                var jsonFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, formatFolderPath, _jsonFolder);
+                var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
                 Directory.CreateDirectory(jsonFolderPath);
                 File.WriteAllText(Path.Combine(jsonFolderPath, _jsonNextSetFileName), JsonSerializer.Serialize(crewsSmash));
             }
@@ -117,16 +121,23 @@ namespace LPMBlitz.Services
             }
         }
 
-        public void SaveCrewsSmashSetQueu(TournamentInfo tournamentInfo, List<CrewsSmashModel> crewsSmashSets, string formatFolderPath)
+        public void SaveCrewsSmashSetQueu(TournamentInfo tournamentInfo, List<CrewsSmashQueuModel> crewsSmashSets, FormatSelection formatSelection)
         {
             try
             {
-
+                var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
+                Directory.CreateDirectory(jsonFolderPath);
+                File.WriteAllText(Path.Combine(jsonFolderPath, _jsonNextSetFileName), JsonSerializer.Serialize(crewsSmashSets));
             }
             catch (Exception ex)
             {
                 throw;
             }
+        }
+
+        private string GetFormatFolderPath(FormatSelection formatSelection)
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _fightingGamesFolder, formatSelection.SelectedGame.ToString(), formatSelection.SelectedFormat.ToString());
         }
     }
 }
