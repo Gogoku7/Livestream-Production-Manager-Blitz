@@ -84,6 +84,8 @@ namespace LPMBlitz.FG.Components
                 FightingGamesSetQueuDataService.SaveCrewsClassicNextSet(AppState.TournamentInfo, AppState.CrewsClassicQueu[index], AppState.FormatSelection);
             else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
                 FightingGamesSetQueuDataService.SaveCrewsSmashNextSet(AppState.TournamentInfo, AppState.CrewsSmashQueu[index], AppState.FormatSelection);
+
+            StateHasChanged();
         }
 
         public void RemoveSet(int index)

@@ -9,50 +9,50 @@ public class FightingGamesConfiguration
 	{
 		Games = new List<GameModel>
 		{
-			new GameModel(GamesEnum.SuperSmashBros64)
+			new(GamesEnum.SuperSmashBros64)
 			{
 				Formats = new List<FormatModel>
 				{
-					new FormatModel(FormatsEnum.Singles),
-					new FormatModel(FormatsEnum.Doubles),
-					new FormatModel(FormatsEnum.SmashCrew)
+					new(FormatsEnum.Singles),
+					new(FormatsEnum.Doubles),
+					new(FormatsEnum.SmashCrew)
 				}
 			},
-			new GameModel(GamesEnum.SuperSmashBrosMelee)
+			new(GamesEnum.SuperSmashBrosMelee)
 			{
 				Formats = new List<FormatModel>
 				{
-					new FormatModel(FormatsEnum.Singles),
-					new FormatModel(FormatsEnum.Doubles),
-					new FormatModel(FormatsEnum.SmashCrew)
+					new(FormatsEnum.Singles),
+					new(FormatsEnum.Doubles),
+					new(FormatsEnum.SmashCrew)
 				}
 			},
-			new GameModel(GamesEnum.SuperSmashBrosBrawl)
+			new(GamesEnum.SuperSmashBrosBrawl)
 			{
 				Formats = new List <FormatModel>
 				{
-					new FormatModel(FormatsEnum.Singles),
-					new FormatModel(FormatsEnum.Doubles),
-					new FormatModel(FormatsEnum.SmashCrew)
+					new(FormatsEnum.Singles),
+					new(FormatsEnum.Doubles),
+					new(FormatsEnum.SmashCrew)
 				}
 			},
-			new GameModel(GamesEnum.SuperSmashBros3DSWiiU)
+			new(GamesEnum.SuperSmashBros3DSWiiU)
 			{
 				Formats = new List <FormatModel>
 				{
-					new FormatModel(FormatsEnum.Singles),
-					new FormatModel(FormatsEnum.Doubles),
-					new FormatModel(FormatsEnum.SmashCrew)
+					new(FormatsEnum.Singles),
+					new(FormatsEnum.Doubles),
+					new(FormatsEnum.SmashCrew)
 				}
 			},
-			new GameModel(GamesEnum.SuperSmashBrosUltimate)
+			new(GamesEnum.SuperSmashBrosUltimate)
 			{
 				Formats = new List <FormatModel>
 				{
-					new FormatModel(FormatsEnum.Singles),
-					new FormatModel(FormatsEnum.Doubles),
-					new FormatModel(FormatsEnum.SmashCrew),
-					new FormatModel(FormatsEnum.SquadStrike)
+					new(FormatsEnum.Singles),
+					new(FormatsEnum.Doubles),
+					new(FormatsEnum.SmashCrew),
+					new(FormatsEnum.SquadStrike)
 				}
 			}
 		}
@@ -62,12 +62,12 @@ public class FightingGamesConfiguration
 	{
 		Games = new List<GameModel>
 		{
-			new GameModel(GamesEnum.Tekken7)
+			new(GamesEnum.Tekken7)
 			{
 				Formats = new List<FormatModel>
 				{
-					new FormatModel(FormatsEnum.Singles),
-					new FormatModel(FormatsEnum.ClassicCrew)
+					new(FormatsEnum.Singles),
+                    new(FormatsEnum.ClassicCrew)
 				}
 			}
 		}

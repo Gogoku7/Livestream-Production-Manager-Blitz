@@ -16,6 +16,9 @@ namespace LPMBlitz.FG.Enums
 		SuperSmashBrosUltimate,
 
 		[Description("TEKKEN 7")]
-		Tekken7
-	}
+		Tekken7,
+
+        [Description("Street Fighter 6")]
+        StreetFighter6
+    }
 }

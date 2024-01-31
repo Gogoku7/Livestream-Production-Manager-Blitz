@@ -10,8 +10,7 @@ namespace LPMBlitz.FG.Models.Formats
     {
         public string Name { get; set; }
         public string Sponsor { get; set; }
-        public string FullName { get => $"{(string.IsNullOrWhiteSpace(Sponsor) ? "" : $"{Sponsor} ")}{Name}"; }
-        public string FullNameAlt { get => $"{(string.IsNullOrWhiteSpace(Sponsor) ? "" : $"{Sponsor} | ")}{Name}"; }
+
         public string RealName { get; set; }
         public string Twitter { get; set; }
         public string Twitch { get; set; }
