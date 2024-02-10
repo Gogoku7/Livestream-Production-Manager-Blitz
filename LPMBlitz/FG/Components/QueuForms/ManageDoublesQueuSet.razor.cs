@@ -1,10 +1,5 @@
 ﻿using LPMBlitz.FG.Models.Formats.Doubles;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LPMBlitz.FG.Components.QueuForms
 {
@@ -18,39 +13,39 @@ namespace LPMBlitz.FG.Components.QueuForms
         public bool ShowMoveDownButton { get; set; }
 
         [Parameter]
-        public Action<int>? ExportSet { get; set; }
+        public EventCallback ExportSet { get; set; }
         [Parameter]
-        public Action<int>? SubmitSet { get; set; }
+        public EventCallback SubmitSet { get; set; }
         [Parameter]
-        public Action<int>? RemoveSet { get; set; }
+        public EventCallback RemoveSet { get; set; }
         [Parameter]
-        public Action<int>? MoveSetUp { get; set; }
+        public EventCallback MoveSetUp { get; set; }
         [Parameter]
-        public Action<int>? MoveSetDown { get; set; }
+        public EventCallback MoveSetDown { get; set; }
 
-        public void OnExportSetClick()
+        public async Task OnExportSetClick()
         {
-            ExportSet?.Invoke(Index);
+            await ExportSet.InvokeAsync(Index);
         }
 
-        public void OnSubmitSetClick()
+        public async Task OnSubmitSetClick()
         {
-            SubmitSet?.Invoke(Index);
+            await SubmitSet.InvokeAsync(Index);
         }
 
-        public void OnRemoveSetButtonClick()
+        public async Task OnRemoveSetButtonClick()
         {
-            RemoveSet?.Invoke(Index);
+            await RemoveSet.InvokeAsync(Index);
         }
 
-        public void OnMoveSetUpButtonClick()
+        public async Task OnMoveSetUpButtonClick()
         {
-            MoveSetUp?.Invoke(Index);
+            await MoveSetUp.InvokeAsync(Index);
         }
 
-        public void OnMoveSetDownButtonClick()
+        public async Task OnMoveSetDownButtonClick()
         {
-            MoveSetDown?.Invoke(Index);
+            await MoveSetDown.InvokeAsync(Index);
         }
     }
 }

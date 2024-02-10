@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LPMBlitz.FG.Configurations;
-using LPMBlitz.FG.Enums;
+﻿using System.ComponentModel;
 using LPMBlitz.FG.Models;
 using LPMBlitz.FG.Models.Formats.CrewsClassic;
 using LPMBlitz.FG.Models.Formats.CrewsSmash;
 using LPMBlitz.FG.Models.Formats.Doubles;
 using LPMBlitz.FG.Models.Formats.Singles;
+using Microsoft.AspNetCore.Components;
 
 namespace LPMBlitz;
 
 public class AppState : IDisposable
 {
-    public event Action? OnChangeFormatSelection;
-    public event Action? OnExportQueuSet;
+    public EventCallback OnChangeFormatSelection;
+    public EventCallback OnExportQueuSet;
 
     public TournamentInfo TournamentInfo { get; set; } = new();
     public FormatSelection FormatSelection { get; set; }
@@ -37,19 +30,17 @@ public class AppState : IDisposable
 
     public AppState()
     {
-        FormatSelection = new(NotifyFormatSelectionHasChanged);
+        FormatSelection = new();
+        FormatSelection.PropertyChanged += OnFormatSelectionChange;
     }
 
+    private async Task NotifyFormatSelectionHasChanged() => await OnChangeFormatSelection.InvokeAsync();
+    public async Task NotifyExportQueuSet() => await OnExportQueuSet.InvokeAsync();
 
-
-    //public void NotifyDataSubmitted(string entityName, bool success) => OnDataSubmitted?.Invoke(new DataSavedEventArgs(entityName, success));
-    private void NotifyFormatSelectionHasChanged() => OnChangeFormatSelection?.Invoke();
-    public void NotifyExportQueuSet() => OnExportQueuSet?.Invoke();
-
-    //private void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-    //{
-    //	NotifyStateChanged();
-    //}
+    private async void OnFormatSelectionChange(object? sender, PropertyChangedEventArgs e)
+    {
+        await NotifyFormatSelectionHasChanged();
+    }
 
     public void Dispose()
     {

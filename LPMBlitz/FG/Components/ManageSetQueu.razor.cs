@@ -1,32 +1,23 @@
-﻿using LPMBlitz.FG.Configurations;
-using LPMBlitz.FG.Enums;
-using LPMBlitz.FG.Models;
-using LPMBlitz.FG.Models.Formats.CrewsClassic;
-using LPMBlitz.FG.Models.Formats.CrewsSmash;
-using LPMBlitz.FG.Models.Formats.Doubles;
-using LPMBlitz.FG.Models.Formats.Singles;
+﻿using LPMBlitz.FG.Enums;
 using LPMBlitz.Services;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LPMBlitz.FG.Components
 {
     public partial class ManageSetQueu : ComponentBase
     {
         [Inject]
-        public FightingGamesDataService FightingGamesDataService { get; set; }
+        private FightingGamesDataService FightingGamesDataService { get; set; }
         [Inject]
-        public FightingGamesSetQueuDataService FightingGamesSetQueuDataService { get; set; }
+        private FightingGamesSetQueuDataService FightingGamesSetQueuDataService { get; set; }
 
         [Inject]
-        public AppState AppState { get; set; }
+        private AppState AppState { get; set; }
 
+        //protected async override Task OnInitializedAsync()
         protected override void OnInitialized()
         {
+            //await base.OnInitializedAsync();
             base.OnInitialized();
 
             AppState.OnChangeFormatSelection += StateHasChanged;
@@ -34,7 +25,7 @@ namespace LPMBlitz.FG.Components
             StateHasChanged();
         }
 
-        public void AddSetToQueu()
+        public async Task AddSetToQueu()
         {
             if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
                 AppState.SinglesQueu.Add(new());
@@ -47,19 +38,20 @@ namespace LPMBlitz.FG.Components
 
             StateHasChanged();
         }
-        public void SubmitEntireQueu()
+
+        public async Task SubmitEntireQueu()
         {
             if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
-                FightingGamesSetQueuDataService.SaveSinglesSetQueu(AppState.TournamentInfo, AppState.SinglesQueu, AppState.FormatSelection);
+                await FightingGamesSetQueuDataService.SaveSinglesSetQueu(AppState.TournamentInfo, AppState.SinglesQueu, AppState.FormatSelection);
             else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Doubles)
-                FightingGamesSetQueuDataService.SaveDoublesSetQueu(AppState.TournamentInfo, AppState.DoublesQueu, AppState.FormatSelection);
+                await FightingGamesSetQueuDataService.SaveDoublesSetQueu(AppState.TournamentInfo, AppState.DoublesQueu, AppState.FormatSelection);
             else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
-                FightingGamesSetQueuDataService.SaveCrewsClassicSetQueu(AppState.TournamentInfo, AppState.CrewsClassicQueu, AppState.FormatSelection);
+                await FightingGamesSetQueuDataService.SaveCrewsClassicSetQueu(AppState.TournamentInfo, AppState.CrewsClassicQueu, AppState.FormatSelection);
             else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
-                FightingGamesSetQueuDataService.SaveCrewsSmashSetQueu(AppState.TournamentInfo, AppState.CrewsSmashQueu, AppState.FormatSelection);
+                await FightingGamesSetQueuDataService.SaveCrewsSmashSetQueu(AppState.TournamentInfo, AppState.CrewsSmashQueu, AppState.FormatSelection);
         }
 
-        public void ExportSet(int index)
+        private async Task ExportSet(int index)
         {
             if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
                 AppState.Singles = AppState.SinglesQueu[index].Singles;
@@ -70,25 +62,25 @@ namespace LPMBlitz.FG.Components
             else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
                 AppState.CrewsSmash = AppState.CrewsSmashQueu[index].CrewsSmash;
 
-            AppState.NotifyExportQueuSet();
+            await AppState.NotifyExportQueuSet();
             StateHasChanged();
         }
 
-        public void SubmitSet(int index)
+        private async Task SubmitSet(int index)
         {
             if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
-                FightingGamesSetQueuDataService.SaveSinglesNextSet(AppState.TournamentInfo, AppState.SinglesQueu[index], AppState.FormatSelection);
+                await FightingGamesSetQueuDataService.SaveSinglesNextSet(AppState.TournamentInfo, AppState.SinglesQueu[index], AppState.FormatSelection);
             else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Doubles)
-                FightingGamesSetQueuDataService.SaveDoublesNextSet(AppState.TournamentInfo, AppState.DoublesQueu[index], AppState.FormatSelection);
+                await FightingGamesSetQueuDataService.SaveDoublesNextSet(AppState.TournamentInfo, AppState.DoublesQueu[index], AppState.FormatSelection);
             else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
-                FightingGamesSetQueuDataService.SaveCrewsClassicNextSet(AppState.TournamentInfo, AppState.CrewsClassicQueu[index], AppState.FormatSelection);
+                await FightingGamesSetQueuDataService.SaveCrewsClassicNextSet(AppState.TournamentInfo, AppState.CrewsClassicQueu[index], AppState.FormatSelection);
             else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
-                FightingGamesSetQueuDataService.SaveCrewsSmashNextSet(AppState.TournamentInfo, AppState.CrewsSmashQueu[index], AppState.FormatSelection);
+                await FightingGamesSetQueuDataService.SaveCrewsSmashNextSet(AppState.TournamentInfo, AppState.CrewsSmashQueu[index], AppState.FormatSelection);
 
             StateHasChanged();
         }
 
-        public void RemoveSet(int index)
+        private async Task RemoveSet(int index)
         {
             if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
                 AppState.SinglesQueu.RemoveAt(index);
@@ -102,7 +94,7 @@ namespace LPMBlitz.FG.Components
             StateHasChanged();
         }
 
-        public void MoveSetUp(int index)
+        private async Task MoveSetUp(int index)
         {
             if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
                 AppState.SinglesQueu.Reverse(index - 1, 2);
@@ -116,7 +108,7 @@ namespace LPMBlitz.FG.Components
             StateHasChanged();
         }
 
-        public void MoveSetDown(int index)
+        private async Task MoveSetDown(int index)
         {
             if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
                 AppState.SinglesQueu.Reverse(index, 2);

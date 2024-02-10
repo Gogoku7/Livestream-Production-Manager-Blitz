@@ -93,7 +93,7 @@
 <div class="card border-primary" id="SetCard">
     <div class="card-header bg-primary border-primary text-white row">
         <div class="col-5">
-            <button class="btn btn-success oi oi-data-transfer-upload" id="submitCommentatorsButton" @onclick="OnSubmitSetClick" title="Submit Set"></button>
+            <button class="btn btn-success oi oi-data-transfer-upload" id="submitCommentatorsButton" @onclick="@(async () => await OnSubmitSetClick())" title="Submit Set"></button>
         </div>
         <div class="col-2 text-center">
             <text class="panel-title">Manage Set</text>

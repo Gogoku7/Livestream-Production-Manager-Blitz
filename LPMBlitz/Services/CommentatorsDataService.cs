@@ -8,7 +8,7 @@ namespace LPMBlitz.Services
         private const string _commentatorsContentFileJsonPath = "./FightingGames/Commentators/JSON/Content.json";
         private const string _commentatorsContentFileCssPath = "./FightingGames/Commentators/CSS/Content.css";
 
-        public void SaveCommentators(List<CommentatorModel> commentators)
+        public async Task SaveCommentators(List<CommentatorModel> commentators)
         {
             try
             {

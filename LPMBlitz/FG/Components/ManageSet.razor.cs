@@ -1,11 +1,4 @@
-﻿using LPMBlitz.FG.Components.SetForms;
-using LPMBlitz.FG.Configurations;
-using LPMBlitz.FG.Enums;
-using LPMBlitz.FG.Models;
-using LPMBlitz.FG.Models.Formats.CrewsClassic;
-using LPMBlitz.FG.Models.Formats.CrewsSmash;
-using LPMBlitz.FG.Models.Formats.Doubles;
-using LPMBlitz.FG.Models.Formats.Singles;
+﻿using LPMBlitz.FG.Enums;
 using LPMBlitz.Services;
 using Microsoft.AspNetCore.Components;
 
@@ -19,14 +12,16 @@ namespace LPMBlitz.FG.Components
         [Inject]
         public AppState AppState { get; set; }
 
+        //protected async override Task OnInitializedAsync()
         protected override void OnInitialized()
         {
             AppState.OnChangeFormatSelection += StateHasChanged;
             AppState.OnExportQueuSet += StateHasChanged;
+            //await base.OnInitializedAsync();
             base.OnInitialized();
         }
 
-        public void SubmitSet()
+        public async Task SubmitSet()
         {
             if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
                 FightingGamesDataService.SaveSingles(AppState.TournamentInfo, AppState.Singles, AppState.FormatSelection);

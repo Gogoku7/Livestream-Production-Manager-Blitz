@@ -9,11 +9,11 @@
         <LPMBlitz.FG.Components.QueuForms.ManageSinglesQueuSet 
         SinglesQueuSet="singles"
         Index="i"
-        ExportSet="ExportSet"
-        SubmitSet="SubmitSet"
-        RemoveSet="RemoveSet"
-        MoveSetUp="MoveSetUp"
-        MoveSetDown="MoveSetDown"
+        ExportSet="@(async () => await ExportSet(i))"
+        SubmitSet="@(async () => await SubmitSet(i))"
+        RemoveSet="@(async () => await RemoveSet(i))"
+        MoveSetUp="@(async () => await MoveSetUp(i))"
+        MoveSetDown="@(async () => await MoveSetDown(i))"
         ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageSinglesQueuSet>
     }
 }
@@ -26,11 +26,11 @@ else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.Doubles)
         <LPMBlitz.FG.Components.QueuForms.ManageDoublesQueuSet 
         DoublesQueuSet="doubles"
         Index="i"
-        ExportSet="ExportSet"
-        SubmitSet="SubmitSet"
-        RemoveSet="RemoveSet"
-        MoveSetUp="MoveSetUp"
-        MoveSetDown="MoveSetDown"
+        ExportSet="@(async () => await ExportSet(i))"
+        SubmitSet="@(async () => await SubmitSet(i))"
+        RemoveSet="@(async () => await RemoveSet(i))"
+        MoveSetUp="@(async () => await MoveSetUp(i))"
+        MoveSetDown="@(async () => await MoveSetDown(i))"
         ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageDoublesQueuSet>
     }   
 }
@@ -43,11 +43,11 @@ else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.ClassicCre
         <LPMBlitz.FG.Components.QueuForms.ManageCrewsClassicQueuSet
         CrewsClassicQueuSet="CrewsClassic"
         Index="i"
-        ExportSet="ExportSet"
-        SubmitSet="SubmitSet"
-        RemoveSet="RemoveSet"
-        MoveSetUp="MoveSetUp"
-        MoveSetDown="MoveSetDown"
+        ExportSet="@(async () => await ExportSet(i))"
+        SubmitSet="@(async () => await SubmitSet(i))"
+        RemoveSet="@(async () => await RemoveSet(i))"
+        MoveSetUp="@(async () => await MoveSetUp(i))"
+        MoveSetDown="@(async () => await MoveSetDown(i))"
         ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageCrewsClassicQueuSet>
     }
 }
@@ -60,11 +60,11 @@ else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.SmashCrew)
         <LPMBlitz.FG.Components.QueuForms.ManageCrewsSmashQueuSet
         CrewsSmashQueuSet="crewsSmash"
         Index="i"
-        ExportSet="ExportSet"
-        SubmitSet="SubmitSet"
-        RemoveSet="RemoveSet"
-        MoveSetUp="MoveSetUp"
-        MoveSetDown="MoveSetDown"
+        ExportSet="@(async () => await ExportSet(i))"
+        SubmitSet="@(async () => await SubmitSet(i))"
+        RemoveSet="@(async () => await RemoveSet(i))"
+        MoveSetUp="@(async () => await MoveSetUp(i))"
+        MoveSetDown="@(async () => await MoveSetDown(i))"
         ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageCrewsSmashQueuSet>
     }
 }

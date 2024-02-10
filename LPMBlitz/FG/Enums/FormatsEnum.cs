@@ -2,7 +2,7 @@
 
 namespace LPMBlitz.FG.Enums
 {
-	public enum FormatsEnum
+    public enum FormatsEnum
 	{
 		[Description("Singles")]
 		Singles,

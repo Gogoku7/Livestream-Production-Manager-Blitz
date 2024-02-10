@@ -7,33 +7,33 @@ namespace LPMBlitz.Pages
     public partial class Commentators : ComponentBase
     {
         [Inject]
-        public CommentatorsDataService CommentatorsDataService { get; set; }
+        private CommentatorsDataService CommentatorsDataService { get; set; }
         private readonly List<CommentatorModel> _commentators = new() { new CommentatorModel() };
 
-        public void OnSubmitCommentatorsClick()
+        private async Task OnSubmitCommentatorsClick()
         {
-            CommentatorsDataService.SaveCommentators(_commentators);
+            await CommentatorsDataService.SaveCommentators(_commentators);
         }
 
-        public void OnAddButtonClick()
+        private async Task OnAddButtonClick()
         {
             _commentators.Add(new CommentatorModel());
             StateHasChanged();
         }
 
-        public void OnRemoveButtonClick(int index)
+        private async Task OnRemoveButtonClick(int index)
         {
             _commentators.RemoveAt(index);
             StateHasChanged();
         }
 
-        public void OnMoveUpButtonClick(int index)
+        private async Task OnMoveUpButtonClick(int index)
         {
             _commentators.Reverse(index - 1, 2);
             StateHasChanged();
         }
 
-        public void OnMoveDownButtonClick(int index)
+        private async Task OnMoveDownButtonClick(int index)
         {
             _commentators.Reverse(index, 2);
             StateHasChanged();

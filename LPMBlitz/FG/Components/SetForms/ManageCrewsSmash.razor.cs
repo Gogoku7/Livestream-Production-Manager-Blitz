@@ -10,7 +10,7 @@ namespace LPMBlitz.FG.Components.SetForms
     public partial class ManageCrewsSmash : ComponentBase
     {
 
-        public void Import()
+        private async Task Import()
         {
 
         }

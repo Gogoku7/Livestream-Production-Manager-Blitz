@@ -1,10 +1,5 @@
 ﻿using LPMBlitz.FG.Components;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LPMBlitz.Pages
 {
@@ -12,41 +7,41 @@ namespace LPMBlitz.Pages
     {
         private ManageSetQueu ManageSetQueu { get; set; }
 
-        public void OnSubmitEntireQueuClick()
+        private async Task OnSubmitEntireQueuClick()
         {
-            ManageSetQueu.SubmitEntireQueu();
+            await ManageSetQueu.SubmitEntireQueu();
         }
 
-        public void OnSubmitSetClick()
+        private async Task OnSubmitSetClick()
         {
             //CommentatorsDataService.SaveCommentators(_commentators);
         }
 
-        public void OnGenerateTop8ButtonClick()
+        private async Task OnGenerateTop8ButtonClick()
         {
             throw new NotImplementedException();
             //Future feature.
         }
 
-        public void OnAddButtonClick()
+        private async Task OnAddButtonClick()
         {
-            ManageSetQueu.AddSetToQueu();
+            await ManageSetQueu.AddSetToQueu();
             StateHasChanged();
         }
 
-        public void OnRemoveButtonClick(int index)
+        private async Task OnRemoveButtonClick(int index)
         {
             //_commentators.RemoveAt(index);
             StateHasChanged();
         }
 
-        public void OnMoveUpButtonClick(int index)
+        private async Task OnMoveUpButtonClick(int index)
         {
             //_commentators.Reverse(index - 1, 2);
             StateHasChanged();
         }
 
-        public void OnMoveDownButtonClick(int index)
+        private async Task OnMoveDownButtonClick(int index)
         {
             //_commentators.Reverse(index, 2);
             StateHasChanged();
