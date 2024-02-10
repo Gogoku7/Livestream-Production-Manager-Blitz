@@ -7,10 +7,10 @@ namespace LPMBlitz.FG.Components
     public partial class ManageSet : ComponentBase
     {
         [Inject]
-        public FightingGamesDataService FightingGamesDataService { get; set; }
+        private FightingGamesDataService FightingGamesDataService { get; set; }
 
         [Inject]
-        public AppState AppState { get; set; }
+        private AppState AppState { get; set; }
 
         //protected async override Task OnInitializedAsync()
         protected override void OnInitialized()
@@ -24,13 +24,13 @@ namespace LPMBlitz.FG.Components
         public async Task SubmitSet()
         {
             if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Singles)
-                FightingGamesDataService.SaveSingles(AppState.TournamentInfo, AppState.Singles, AppState.FormatSelection);
+                await FightingGamesDataService.SaveSingles(AppState.TournamentInfo, AppState.Singles, AppState.FormatSelection);
             else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.Doubles)
-                FightingGamesDataService.SaveDoubles(AppState.TournamentInfo, AppState.Doubles, AppState.FormatSelection);
+                await FightingGamesDataService.SaveDoubles(AppState.TournamentInfo, AppState.Doubles, AppState.FormatSelection);
             else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.ClassicCrew)
-                FightingGamesDataService.SaveCrewsClassic(AppState.TournamentInfo, AppState.CrewsClassic, AppState.FormatSelection);
+                await FightingGamesDataService.SaveCrewsClassic(AppState.TournamentInfo, AppState.CrewsClassic, AppState.FormatSelection);
             else if (AppState.FormatSelection.SelectedFormat == FormatsEnum.SmashCrew)
-                FightingGamesDataService.SaveCrewsSmash(AppState.TournamentInfo, AppState.CrewsSmash, AppState.FormatSelection);
+                await FightingGamesDataService.SaveCrewsSmash(AppState.TournamentInfo, AppState.CrewsSmash, AppState.FormatSelection);
         }
     }
 }
