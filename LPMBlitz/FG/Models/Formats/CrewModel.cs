@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LPMBlitz.FG.Models.Formats
-{
-    public class CrewModel
-    {
+namespace LPMBlitz.FG.Models.Formats;
 
-    }
+public class CrewModel
+{
+
 }

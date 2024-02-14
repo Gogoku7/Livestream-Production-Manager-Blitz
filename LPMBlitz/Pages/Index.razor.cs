@@ -15,11 +15,9 @@ public partial class Index : ComponentBase
 
     private ManageSet ManageSet { get; set; }
 
-    //protected async override Task OnInitializedAsync()
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
-        //await base.OnInitializedAsync();
-        base.OnInitialized();
+        await base.OnInitializedAsync();
         AppState.FormatSelection.Series = FightingGamesConfiguration.GetConfiguration();
         StateHasChanged();
     }

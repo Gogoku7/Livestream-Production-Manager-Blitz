@@ -4,14 +4,13 @@ using LPMBlitz.FG.Models.Formats.CrewsClassic;
 using LPMBlitz.FG.Models.Formats.CrewsSmash;
 using LPMBlitz.FG.Models.Formats.Doubles;
 using LPMBlitz.FG.Models.Formats.Singles;
-using Microsoft.AspNetCore.Components;
 
 namespace LPMBlitz;
 
 public class AppState : IDisposable
 {
-    public EventCallback OnChangeFormatSelection;
-    public EventCallback OnExportQueuSet;
+    public event EventHandler<EventArgs> OnChangeformatSelectionEvent;
+    public event EventHandler<EventArgs> OnExportQueuSetEvent;
 
     public TournamentInfo TournamentInfo { get; set; } = new();
     public FormatSelection FormatSelection { get; set; }
@@ -34,14 +33,12 @@ public class AppState : IDisposable
         FormatSelection.PropertyChanged += OnFormatSelectionChange;
     }
 
-    private async Task NotifyFormatSelectionHasChanged() => await OnChangeFormatSelection.InvokeAsync();
-    public async Task NotifyExportQueuSet() => await OnExportQueuSet.InvokeAsync();
+    public async Task NotifyExportQueuSet() => 
+        OnExportQueuSetEvent?.Invoke(this, EventArgs.Empty);
 
-    private async void OnFormatSelectionChange(object? sender, PropertyChangedEventArgs e)
-    {
-        await NotifyFormatSelectionHasChanged();
-    }
-
+    private async void OnFormatSelectionChange(object? sender, PropertyChangedEventArgs e) => 
+        OnChangeformatSelectionEvent?.Invoke(this, EventArgs.Empty);
+    
     public void Dispose()
     {
     }

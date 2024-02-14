@@ -4,16 +4,17 @@
 {
     for (var i = 0; i < AppState.SinglesQueu.Count; i++)
     {
+        var index = i;
         var singles = AppState.SinglesQueu[i];
         var showMoveDownButton = i < AppState.SinglesQueu.Count - 1;
         <LPMBlitz.FG.Components.QueuForms.ManageSinglesQueuSet 
         SinglesQueuSet="singles"
         Index="i"
-        ExportSet="@(async () => await ExportSet(i))"
-        SubmitSet="@(async () => await SubmitSet(i))"
-        RemoveSet="@(async () => await RemoveSet(i))"
-        MoveSetUp="@(async () => await MoveSetUp(i))"
-        MoveSetDown="@(async () => await MoveSetDown(i))"
+        ExportSet="@(async () => await ExportSet(index))"
+        SubmitSet="@(async () => await SubmitSet(index))"
+        RemoveSet="@(async () => await RemoveSet(index))"
+        MoveSetUp="@(async () => await MoveSetUp(index))"
+        MoveSetDown="@(async () => await MoveSetDown(index))"
         ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageSinglesQueuSet>
     }
 }
@@ -21,16 +22,17 @@ else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.Doubles)
 {
     for (var i = 0; i < AppState.DoublesQueu.Count; i++)
     {
+        var index = i;
         var doubles = AppState.DoublesQueu[i];
         var showMoveDownButton = i < AppState.DoublesQueu.Count - 1;
         <LPMBlitz.FG.Components.QueuForms.ManageDoublesQueuSet 
         DoublesQueuSet="doubles"
         Index="i"
-        ExportSet="@(async () => await ExportSet(i))"
-        SubmitSet="@(async () => await SubmitSet(i))"
-        RemoveSet="@(async () => await RemoveSet(i))"
-        MoveSetUp="@(async () => await MoveSetUp(i))"
-        MoveSetDown="@(async () => await MoveSetDown(i))"
+        ExportSet="@(async () => await ExportSet(index))"
+        SubmitSet="@(async () => await SubmitSet(index))"
+        RemoveSet="@(async () => await RemoveSet(index))"
+        MoveSetUp="@(async () => await MoveSetUp(index))"
+        MoveSetDown="@(async () => await MoveSetDown(index))"
         ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageDoublesQueuSet>
     }   
 }
@@ -38,16 +40,17 @@ else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.ClassicCre
 {
     for (int i = 0; i < AppState.CrewsClassicQueu.Count; i++)
     {
+        var index = i;
         var CrewsClassic = AppState.CrewsClassicQueu[i];
         var showMoveDownButton = i < AppState.CrewsClassicQueu.Count - 1;
         <LPMBlitz.FG.Components.QueuForms.ManageCrewsClassicQueuSet
         CrewsClassicQueuSet="CrewsClassic"
         Index="i"
-        ExportSet="@(async () => await ExportSet(i))"
-        SubmitSet="@(async () => await SubmitSet(i))"
-        RemoveSet="@(async () => await RemoveSet(i))"
-        MoveSetUp="@(async () => await MoveSetUp(i))"
-        MoveSetDown="@(async () => await MoveSetDown(i))"
+        ExportSet="@(async () => await ExportSet(index))"
+        SubmitSet="@(async () => await SubmitSet(index))"
+        RemoveSet="@(async () => await RemoveSet(index))"
+        MoveSetUp="@(async () => await MoveSetUp(index))"
+        MoveSetDown="@(async () => await MoveSetDown(index))"
         ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageCrewsClassicQueuSet>
     }
 }
@@ -55,16 +58,17 @@ else if (AppState.FormatSelection.SelectedFormat == Enums.FormatsEnum.SmashCrew)
 {
     for (int i = 0; i < AppState.CrewsSmashQueu.Count; i++)
     {
+        var index = i;
         var crewsSmash = AppState.CrewsSmashQueu[i];
         var showMoveDownButton = i < AppState.CrewsSmashQueu.Count - 1;
         <LPMBlitz.FG.Components.QueuForms.ManageCrewsSmashQueuSet
         CrewsSmashQueuSet="crewsSmash"
         Index="i"
-        ExportSet="@(async () => await ExportSet(i))"
-        SubmitSet="@(async () => await SubmitSet(i))"
-        RemoveSet="@(async () => await RemoveSet(i))"
-        MoveSetUp="@(async () => await MoveSetUp(i))"
-        MoveSetDown="@(async () => await MoveSetDown(i))"
+        ExportSet="@(async () => await ExportSet(index))"
+        SubmitSet="@(async () => await SubmitSet(index))"
+        RemoveSet="@(async () => await RemoveSet(index))"
+        MoveSetUp="@(async () => await MoveSetUp(index))"
+        MoveSetDown="@(async () => await MoveSetDown(index))"
         ShowMoveDownButton="showMoveDownButton"></LPMBlitz.FG.Components.QueuForms.ManageCrewsSmashQueuSet>
     }
 }

@@ -1,7 +1,6 @@
-﻿namespace LPMBlitz.FG.Models.Formats.Doubles
+﻿namespace LPMBlitz.FG.Models.Formats.Doubles;
+
+public class DoublesQueuModel : QueuModel
 {
-    public class DoublesQueuModel : QueuModel
-    {
-        public DoublesModel Doubles { get; set; } = new();
-    }
+    public DoublesModel Doubles { get; set; } = new();
 }

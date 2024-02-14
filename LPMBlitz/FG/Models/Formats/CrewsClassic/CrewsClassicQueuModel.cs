@@ -1,7 +1,6 @@
-﻿namespace LPMBlitz.FG.Models.Formats.CrewsClassic
+﻿namespace LPMBlitz.FG.Models.Formats.CrewsClassic;
+
+public class CrewsClassicQueuModel : QueuModel
 {
-    public class CrewsClassicQueuModel : QueuModel
-    {
-        public CrewsClassicModel CrewsClassic { get; set; } = new();
-    }
+    public CrewsClassicModel CrewsClassic { get; set; } = new();
 }

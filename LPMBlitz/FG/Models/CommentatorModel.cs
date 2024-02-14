@@ -1,8 +1,7 @@
-﻿namespace LPMBlitz.FG.Models
+﻿namespace LPMBlitz.FG.Models;
+
+public class CommentatorModel
 {
-    public class CommentatorModel
-    {
-        public string Name { get; set; }
-        public string Twitter { get; set; }
-    }
+    public string Name { get; set; }
+    public string Twitter { get; set; }
 }

@@ -5,12 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace LPMBlitz.FG.Models.Formats
-{
-    public class PlayerDataModel
-    {
+namespace LPMBlitz.FG.Models.Formats;
 
-        public string FullName { get; set; } // $"{(string.IsNullOrWhiteSpace(Sponsor) ? "" : $"{Sponsor} ")}{Name}"
-        public string FullNameWithSeparator { get; set; } //$"{(string.IsNullOrWhiteSpace(Sponsor) ? "" : $"{Sponsor} | ")}{Name}"
-    }
+public class PlayerDataModel
+{
+
+    public string FullName { get; set; } // $"{(string.IsNullOrWhiteSpace(Sponsor) ? "" : $"{Sponsor} ")}{Name}"
+    public string FullNameWithSeparator { get; set; } //$"{(string.IsNullOrWhiteSpace(Sponsor) ? "" : $"{Sponsor} | ")}{Name}"
 }

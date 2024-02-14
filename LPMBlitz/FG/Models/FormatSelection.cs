@@ -1,5 +1,4 @@
 ﻿using LPMBlitz.FG.Enums;
-using Microsoft.AspNetCore.Components;
 using System.ComponentModel;
 
 namespace LPMBlitz.FG.Models;
@@ -17,6 +16,7 @@ public class FormatSelection : INotifyPropertyChanged
             SelectedFormat = null;
             Games = Series.First(s => s.Series == SelectedSeries).Games;
             Formats = null;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedSeries)));
         }
     }
 
@@ -34,6 +34,7 @@ public class FormatSelection : INotifyPropertyChanged
                 SelectedFormat = null;
                 Formats = Games.First(g => g.Game == SelectedGame).Formats;
             }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedGame)));
         }
     }
 
@@ -44,6 +45,7 @@ public class FormatSelection : INotifyPropertyChanged
         set
         {
             _selectedFormat = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedFormat)));
         }
     }
 

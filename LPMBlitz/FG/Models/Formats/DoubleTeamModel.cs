@@ -1,8 +1,7 @@
-﻿namespace LPMBlitz.FG.Models.Formats
+﻿namespace LPMBlitz.FG.Models.Formats;
+
+public class DoubleTeamModel
 {
-    public class DoubleTeamModel
-    {
-        public PlayerModel Player1 { get; set; }
-        public PlayerModel Player2 { get; set; }
-    }
+    public PlayerModel Player1 { get; set; }
+    public PlayerModel Player2 { get; set; }
 }

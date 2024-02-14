@@ -38,9 +38,12 @@
                     <div class="row">
                         @if (i == 0)
                         {
-                            <div class="col-4 col-lg-3 col-xxl-2">
-                                <button type="button" class="btn btn-primary" @onclick="@(async () => await OnMoveDownButtonClick(index))"><span class="oi oi-arrow-bottom"></span></button>
-                            </div>
+                            if (_commentators.Count != 1)
+                            {
+                                <div class="col-4 col-lg-3 col-xxl-2">
+                                    <button type="button" class="btn btn-primary" @onclick="@(async () => await OnMoveDownButtonClick(index))"><span class="oi oi-arrow-bottom"></span></button>
+                                </div>
+                            }
                             <div class="col-4 offset-4 col-lg-3 offset-lg-3 col-xxl-2 offset-xxl-2">
                                 <button type="button" class="btn btn-danger" @onclick="@(async () => await OnRemoveButtonClick(index))"><span class="oi oi-x"></span></button>
                             </div>

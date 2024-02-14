@@ -1,24 +1,23 @@
 ﻿using LPMBlitz.FG.Models;
 using System.Text.Json;
 
-namespace LPMBlitz.Services
-{
-    public class CommentatorsDataService
-    {
-        private const string _commentatorsContentFileJsonPath = "./FightingGames/Commentators/JSON/Content.json";
-        private const string _commentatorsContentFileCssPath = "./FightingGames/Commentators/CSS/Content.css";
+namespace LPMBlitz.Services;
 
-        public async Task SaveCommentators(List<CommentatorModel> commentators)
+public class CommentatorsDataService
+{
+    private const string _commentatorsContentFileJsonPath = "./FightingGames/Commentators/JSON/Content.json";
+    private const string _commentatorsContentFileCssPath = "./FightingGames/Commentators/CSS/Content.css";
+
+    public async Task SaveCommentators(List<CommentatorModel> commentators)
+    {
+        try
         {
-            try
-            {
-                var json = JsonSerializer.Serialize(commentators);
-                File.WriteAllText(_commentatorsContentFileJsonPath, json);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            var json = JsonSerializer.Serialize(commentators);
+            File.WriteAllText(_commentatorsContentFileJsonPath, json);
+        }
+        catch (Exception ex)
+        {
+            throw;
         }
     }
 }

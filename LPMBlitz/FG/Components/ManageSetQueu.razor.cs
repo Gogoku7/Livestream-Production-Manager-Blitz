@@ -14,16 +14,17 @@ namespace LPMBlitz.FG.Components
         [Inject]
         private AppState AppState { get; set; }
 
-        //protected async override Task OnInitializedAsync()
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            //await base.OnInitializedAsync();
-            base.OnInitialized();
+            await base.OnInitializedAsync();
 
-            AppState.OnChangeFormatSelection += StateHasChanged;
-            
+            AppState.OnChangeformatSelectionEvent += FormatSelectionChanged;
+
             StateHasChanged();
         }
+
+        private async void FormatSelectionChanged(object sender, EventArgs e) => 
+            StateHasChanged();
 
         public async Task AddSetToQueu()
         {
