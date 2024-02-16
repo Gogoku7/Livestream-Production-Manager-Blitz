@@ -2,14 +2,14 @@
 
 <div class="card border-success" id="FormatSelectionCard" style="height: 100%;">
     <div class="card-header bg-success border-success text-white row">
-        <div class="col-5">
+        <div class="col-4">
             <button class="btn btn-success btn-outline-light oi oi-data-transfer-upload" id="submitCommentatorsButton" @onclick="@(async () => await OnSubmitCommentatorsClick())" title="Submit Commentators"></button>
         </div>
-        <div class="col-2 text-center">
+        <div class="col-4 text-center">
             <text class="panel-title">Manage Commentators</text>
         </div>
 
-        <div class="col-5 text-right">
+        <div class="col-4 text-right">
             <button class="btn btn-success btn-outline-light oi oi-plus" id="addCommentatorButton" @onclick="@(async () => await OnAddButtonClick())" title="Add a new Commentator"></button>
         </div>
     </div>
@@ -44,7 +44,7 @@
                                     <button type="button" class="btn btn-primary" @onclick="@(async () => await OnMoveDownButtonClick(index))"><span class="oi oi-arrow-bottom"></span></button>
                                 </div>
                             }
-                            <div class="col-4 offset-4 col-lg-3 offset-lg-3 col-xxl-2 offset-xxl-2">
+                            <div class="@CalculateDeleteButtonColOffset">
                                 <button type="button" class="btn btn-danger" @onclick="@(async () => await OnRemoveButtonClick(index))"><span class="oi oi-x"></span></button>
                             </div>
                         }

@@ -17,9 +17,7 @@ namespace LPMBlitz.FG.Components
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
-
             AppState.OnChangeformatSelectionEvent += FormatSelectionChanged;
-
             StateHasChanged();
         }
 

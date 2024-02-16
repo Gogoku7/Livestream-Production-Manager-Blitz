@@ -17,6 +17,8 @@ public enum GamesEnum
 
 	[Description("TEKKEN 7")]
 	Tekken7,
+    [Description("TEKKEN 8")]
+    Tekken8,
 
     [Description("Street Fighter 6")]
     StreetFighter6

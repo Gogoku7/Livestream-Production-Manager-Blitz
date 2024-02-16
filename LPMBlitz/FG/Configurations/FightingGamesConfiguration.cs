@@ -69,8 +69,16 @@ public class FightingGamesConfiguration
 					new(FormatsEnum.Singles),
                     new(FormatsEnum.ClassicCrew)
 				}
-			}
-		}
+			},
+            new(GamesEnum.Tekken8)
+            {
+                Formats = new List<FormatModel>
+                {
+                    new(FormatsEnum.Singles),
+                    new(FormatsEnum.ClassicCrew)
+                }
+            }
+        }
 	};
 
     public readonly string BasePath = "/FG";

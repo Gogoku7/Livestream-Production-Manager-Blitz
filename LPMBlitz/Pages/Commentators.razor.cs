@@ -10,6 +10,10 @@ namespace LPMBlitz.Pages
         private CommentatorsDataService CommentatorsDataService { get; set; }
         private readonly List<CommentatorModel> _commentators = new() { new CommentatorModel() };
 
+        private string CalculateDeleteButtonColOffset => _commentators.Count == 1 
+            ? "col-4 offset-8 col-lg-3 offset-lg-6 col-xxl-2 offset-xxl-4"
+            : "col-4 offset-4 col-lg-3 offset-lg-3 col-xxl-2 offset-xxl-2";
+
         private async Task OnSubmitCommentatorsClick()
         {
             await CommentatorsDataService.SaveCommentators(_commentators);
