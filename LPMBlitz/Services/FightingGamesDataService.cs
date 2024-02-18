@@ -20,9 +20,10 @@ public class FightingGamesDataService
     {
         try
         {
-            var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
-            Directory.CreateDirectory(jsonFolderPath);
-            await File.WriteAllTextAsync(Path.Combine(jsonFolderPath, _jsonFileName), JsonSerializer.Serialize(singles, jsonSerializerOptions));
+            var singlesData = new SinglesDataModel(tournamentInfo, singles);
+            var jsonFolderPath = GetFormatFolderPathAndCreate(formatSelection, _jsonFolder);
+            //var cssFolderPath = GetFormatFolderPathAndCreate(formatSelection, _cssFolder);
+            await File.WriteAllTextAsync(Path.Combine(jsonFolderPath, _jsonFileName), JsonSerializer.Serialize(singlesData, jsonSerializerOptions));
         }
         catch (Exception ex)
         {
@@ -34,8 +35,8 @@ public class FightingGamesDataService
     {
         try
         {
-            var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
-            Directory.CreateDirectory(jsonFolderPath);
+            var jsonFolderPath = GetFormatFolderPathAndCreate(formatSelection, _jsonFolder);
+            //var cssFolderPath = GetFormatFolderPathAndCreate(formatSelection, _cssFolder);
             await File.WriteAllTextAsync(Path.Combine(jsonFolderPath, _jsonFileName), JsonSerializer.Serialize(doubles));
         }
         catch (Exception ex)
@@ -48,8 +49,8 @@ public class FightingGamesDataService
     {
         try
         {
-            var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
-            Directory.CreateDirectory(jsonFolderPath);
+            var jsonFolderPath = GetFormatFolderPathAndCreate(formatSelection, _jsonFolder);
+            //var cssFolderPath = GetFormatFolderPathAndCreate(formatSelection, _cssFolder);
             await File.WriteAllTextAsync(Path.Combine(jsonFolderPath, _jsonFileName), JsonSerializer.Serialize(crewsClassic));
         }
         catch (Exception ex)
@@ -62,8 +63,8 @@ public class FightingGamesDataService
     {
         try
         {
-            var jsonFolderPath = Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder);
-            Directory.CreateDirectory(jsonFolderPath);
+            var jsonFolderPath = GetFormatFolderPathAndCreate(formatSelection, _jsonFolder);
+            //var cssFolderPath = GetFormatFolderPathAndCreate(formatSelection, _cssFolder);
             await File.WriteAllTextAsync(Path.Combine(jsonFolderPath, _jsonFileName), JsonSerializer.Serialize(crewsSmash));
         }
         catch (Exception ex)
@@ -76,7 +77,7 @@ public class FightingGamesDataService
     {
         try
         {
-            return await File.ReadAllTextAsync(Path.Combine(GetFormatFolderPath(formatSelection), _jsonFolder, _jsonFileName));
+            return await File.ReadAllTextAsync(Path.Combine(GetFormatFolderPathAndCreate(formatSelection, _jsonFolder), _jsonFileName));
         }
         catch (Exception ex)
         {
@@ -84,10 +85,10 @@ public class FightingGamesDataService
         }
     }
 
-    private string GetFormatFolderPath(FormatSelection formatSelection)
+    private string GetFormatFolderPathAndCreate(FormatSelection formatSelection, string folderPath)
     {
-        return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _fightingGamesFolder, formatSelection.SelectedGame.ToString(), formatSelection.SelectedFormat.ToString());
-        //TODO: test this
-        //return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _fightingGamesFolder, formatSelection.SelectedGame.ToString(), formatSelection.SelectedFormat.ToString(), _jsonFolder);
+        var jsonFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _fightingGamesFolder, formatSelection.SelectedGame.ToString(), formatSelection.SelectedFormat.ToString(), folderPath);
+        Directory.CreateDirectory(jsonFolderPath);
+        return jsonFolderPath;
     }
 }
