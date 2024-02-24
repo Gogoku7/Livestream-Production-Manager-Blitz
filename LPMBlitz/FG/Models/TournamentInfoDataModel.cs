@@ -55,16 +55,12 @@ public class TournamentInfoDataModel
 
     private string ProcessBestOf(string prefix)
     {
-        var bestOfOrFirstTo = BestOfOrFirstTo.Replace(" ", string.Empty);
-        if (new Regex(@"^(bestof\d+$|bo\d+$)", RegexOptions.IgnoreCase).IsMatch(bestOfOrFirstTo))
-        {
-            var bestOfNumber = bestOfOrFirstTo.Replace("bestof", string.Empty, StringComparison.OrdinalIgnoreCase).Replace("bo", string.Empty, StringComparison.OrdinalIgnoreCase);
-            return $"{prefix}{bestOfNumber}";
-        }
-        if (!new Regex(@"^(firstto\d+$|ft\d+$)", RegexOptions.IgnoreCase).IsMatch(bestOfOrFirstTo)) return string.Empty;
+        var match = Regex.Match(BestOfOrFirstTo, @"^(?'prefix'b(?:est)? *o(?:f)?|f(?:irst)? *t(?:o)?) *(?'number'\d+)$", RegexOptions.IgnoreCase);
+        if (!match.Success) return string.Empty;
 
-        var firstToNumberString = bestOfOrFirstTo.Replace("firstto", string.Empty, StringComparison.OrdinalIgnoreCase).Replace("ft", string.Empty, StringComparison.OrdinalIgnoreCase);
-        var firstToNumber = int.Parse(firstToNumberString);
+        if (char.ToLower(match.Groups["prefix"].Value[0]).Equals('b')) return $"{prefix}{match.Groups["number"].Value}";
+
+        var firstToNumber = int.Parse(match.Groups["number"].Value);
         return $"{prefix}{(firstToNumber > 1 ? (firstToNumber * 2 - 1) : firstToNumber)}";
     }
 
@@ -79,16 +75,10 @@ public class TournamentInfoDataModel
 
     private string ProcessFirstTo(string prefix)
     {
-        var bestOfOrFirstTo = BestOfOrFirstTo.Replace(" ", string.Empty);
-        if (new Regex(@"^(bestof\d+$|bo\d+$)", RegexOptions.IgnoreCase).IsMatch(bestOfOrFirstTo))
-        {
-            var bestOfNumber = bestOfOrFirstTo.Replace("bestof", string.Empty, StringComparison.OrdinalIgnoreCase).Replace("bo", string.Empty, StringComparison.OrdinalIgnoreCase);
-            return $"{prefix}{Math.Ceiling(int.Parse(bestOfNumber) / 2d)}";
-        }
-        if (!new Regex(@"^(firstto\d+$|ft\d+$)", RegexOptions.IgnoreCase).IsMatch(bestOfOrFirstTo)) return string.Empty;
+        var match = Regex.Match(BestOfOrFirstTo, @"^(?'prefix'b(?:est)? *o(?:f)?|f(?:irst)? *t(?:o)?) *(?'number'\d+)$", RegexOptions.IgnoreCase);
+        if (!match.Success) return string.Empty;
 
-        var firstToNumber = bestOfOrFirstTo.Replace("firstto", string.Empty, StringComparison.OrdinalIgnoreCase).Replace("ft", string.Empty, StringComparison.OrdinalIgnoreCase);
-        return $"{prefix}{firstToNumber}";
+        return char.ToLower(match.Groups["prefix"].Value[0]).Equals('f') ? $"{prefix}{match.Groups["number"].Value}" : $"{prefix}{Math.Ceiling(int.Parse(match.Groups["number"].Value) / 2d)}";
     }
 
     public string WinnerAdvancesTo { get; set; } // if top 8
